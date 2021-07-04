@@ -14,8 +14,8 @@ const CourseItem = (props) => {
                 />
             </View>
             <View style={styles.courseTitle}>
-                <Text style={[styles.textCenter, styles.textNormal]}>{courseName}</Text>
-                {price ? <Text style={[styles.textBold, styles.textCenter]}>{price}</Text> : <React.Fragment></React.Fragment>}
+                <Text style={[styles.textCenter, styles.textNormal, styles.textWhite]}>{courseName}</Text>
+                {/* {price ? <Text style={[styles.textBold, styles.textCenter, styles.textWhite]}>{price}</Text> : <React.Fragment></React.Fragment>} */}
             </View>
         </View>
     );
@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     textCenter: {
         textAlign: 'center',
     },
+    textWhite: {
+        color: '#fff'
+    }
 });
 
 export default CourseItem;

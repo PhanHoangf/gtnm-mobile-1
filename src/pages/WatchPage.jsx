@@ -64,12 +64,12 @@ const WatchPage = () => {
     });
     return (
         <ScrollView>
-            <View style={styles.watchContainer}>
+            {/* <View style={styles.watchContainer}>
                 <View style={styles.videoInfo}>
                     <Text style={styles.title}>TITLE</Text>
                     <Text style={styles.subTitle}>2.7M views - 5 days ago</Text>
                 </View>
-            </View>
+            </View> */}
             {/* <ScrollView>{viewCourses}</ScrollView> */}
             <View style={styles.commentContainer}>
                 <View style={styles.commentHeader}>
@@ -82,7 +82,7 @@ const WatchPage = () => {
                             }}
                         />
                         <View style={styles.myInfo}>
-                            <Text style={styles.myName}>Pussy Cat</Text>
+                            <Text style={[styles.myName, styles.textWhite]}>Pussy Cat</Text>
                             <Input />
                         </View>
                     </View>
@@ -96,8 +96,8 @@ const WatchPage = () => {
                             }}
                         />
                         <View style={styles.myInfo}>
-                            <Text style={styles.myName}>Pussy Cat 2</Text>
-                            <Text>Niceeee!!!</Text>
+                            <Text style={[styles.myName, styles.textWhite]}>Pussy Cat 2</Text>
+                            <Text style={styles.textWhite}>Niceeee!!!</Text>
                         </View>
                     </View>
                     <View style={styles.myComment}>
@@ -108,8 +108,8 @@ const WatchPage = () => {
                             }}
                         />
                         <View style={styles.myInfo}>
-                            <Text style={styles.myName}>Pussy Cat 3</Text>
-                            <Text>Bravo Bravo!!!</Text>
+                            <Text style={[styles.myName, styles.textWhite]}>Pussy Cat 3</Text>
+                            <Text style={styles.textWhite}>Bravo Bravo!!!</Text>
                         </View>
                     </View>
                     <View style={styles.myComment}>
@@ -120,8 +120,8 @@ const WatchPage = () => {
                             }}
                         />
                         <View style={styles.myInfo}>
-                            <Text style={styles.myName}>Pussy Cat 3</Text>
-                            <Text>Nicely done human!!!</Text>
+                            <Text style={[styles.myName, styles.textWhite]}>Pussy Cat 3</Text>
+                            <Text style={styles.textWhite}>Nicely done human!!!</Text>
                         </View>
                     </View>
                     <View style={styles.myComment}>
@@ -132,8 +132,8 @@ const WatchPage = () => {
                             }}
                         />
                         <View style={styles.myInfo}>
-                            <Text style={styles.myName}>Pussy Cat 3</Text>
-                            <Text>Cat from Viet Nam</Text>
+                            <Text style={[styles.myName, styles.textWhite]}>Pussy Cat 3</Text>
+                            <Text style={styles.textWhite}>Cat from Viet Nam</Text>
                         </View>
                     </View>
                 </View>
@@ -143,6 +143,9 @@ const WatchPage = () => {
 };
 
 const styles = StyleSheet.create({
+    commentContainer: {
+        backgroundColor: '#000',
+    },
     watchContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -177,7 +180,7 @@ const styles = StyleSheet.create({
     },
     myInfo: {
         marginLeft: 20,
-        width: '50%'
+        width: '50%',
     },
     myName: {
         fontSize: 15,
@@ -185,6 +188,9 @@ const styles = StyleSheet.create({
     },
     commentBody: {
         paddingLeft: 30,
+    },
+    textWhite: {
+        color: '#fff',
     },
 });
 

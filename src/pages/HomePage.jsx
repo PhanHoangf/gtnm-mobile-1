@@ -3,20 +3,20 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react
 import CourseItem from '../components/course-item/CourseItem';
 
 const courses = [
-    { courseName: 'Courses 1', price: '$19.99' },
-    { courseName: 'Courses 2', price: '$19.99' },
-    { courseName: 'Courses 3', price: '$19.99' },
-    { courseName: 'Courses 4', price: '$19.99' },
-    { courseName: 'Courses 5', price: '$19.99' },
-    { courseName: 'Courses 6', price: '$19.99' },
+    { courseName: 'Film 1', price: '$19.99' },
+    { courseName: 'Film 2', price: '$19.99' },
+    { courseName: 'Film 3', price: '$19.99' },
+    { courseName: 'Film 4', price: '$19.99' },
+    { courseName: 'Film 5', price: '$19.99' },
+    { courseName: 'Film 6', price: '$19.99' },
 ];
 
-const HomePage = () => {
+const HomePage = (props) => {
     return (
         <View style={styles.homeContainer}>
             <View style={styles.recommendContainer}>
                 <View style={styles.homeTitle}>
-                    <Text style={styles.textTitle}>Recommended Courses</Text>
+                    <Text style={[styles.textTitle, styles.textWhite]}>My list</Text>
                 </View>
                 <View style={styles.coursesContainer}>
                     <FlatList
@@ -24,9 +24,14 @@ const HomePage = () => {
                         data={courses}
                         renderItem={({ item, index }) => {
                             return (
-                                <View key={index} style={styles.coursesContainer}>
-                                    <CourseItem courseName={item.courseName}></CourseItem>
-                                </View>
+                                <TouchableOpacity onPress={() => props.route.jumpTo('watch')}>
+                                    <View key={index} style={styles.coursesContainer}>
+                                        <CourseItem
+                                            courseName={item.courseName}
+                                            price={item.price}
+                                        ></CourseItem>
+                                    </View>
+                                </TouchableOpacity>
                             );
                         }}
                     />
@@ -34,7 +39,7 @@ const HomePage = () => {
             </View>
             <View style={styles.sectionContainer}>
                 <View style={styles.homeTitle}>
-                    <Text style={styles.textTitle}>Trending</Text>
+                    <Text style={[styles.textTitle, styles.textWhite]}>Recommend films</Text>
                 </View>
                 <View style={styles.coursesContainer}>
                     <FlatList
@@ -42,12 +47,14 @@ const HomePage = () => {
                         data={courses}
                         renderItem={({ item, index }) => {
                             return (
-                                <View key={index} style={styles.coursesContainer}>
-                                    <CourseItem
-                                        courseName={item.courseName}
-                                        price={item.price}
-                                    ></CourseItem>
-                                </View>
+                                <TouchableOpacity>
+                                    <View key={index} style={styles.coursesContainer}>
+                                        <CourseItem
+                                            courseName={item.courseName}
+                                            price={item.price}
+                                        ></CourseItem>
+                                    </View>
+                                </TouchableOpacity>
                             );
                         }}
                     />
@@ -55,13 +62,13 @@ const HomePage = () => {
             </View>
             <View style={styles.sectionContainer}>
                 <View style={styles.homeTitle}>
-                    <Text style={styles.textTitle}>Activity Archive</Text>
-                    <TouchableOpacity>
+                    <Text style={[styles.textTitle, styles.textWhite]}>Common films</Text>
+                    {/* <TouchableOpacity>
                         <Image
                             style={styles.messengerIcon}
                             source={require('../../assets/messenger.png')}
                         />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <View style={styles.coursesContainer}>
                     <FlatList
@@ -69,12 +76,14 @@ const HomePage = () => {
                         data={courses}
                         renderItem={({ item, index }) => {
                             return (
-                                <View key={index} style={styles.coursesContainer}>
-                                    <CourseItem
-                                        courseName={item.courseName}
-                                        price={item.price}
-                                    ></CourseItem>
-                                </View>
+                                <TouchableOpacity>
+                                    <View key={index} style={styles.coursesContainer}>
+                                        <CourseItem
+                                            courseName={item.courseName}
+                                            price={item.price}
+                                        ></CourseItem>
+                                    </View>
+                                </TouchableOpacity>
                             );
                         }}
                     />
@@ -90,6 +99,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'flex-start',
         width: '100%',
+        backgroundColor: '#000000',
     },
     sectionContainer: {
         flex: 1,
@@ -120,6 +130,9 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         marginRight: 10,
+    },
+    textWhite: {
+        color: '#fff',
     },
 });
 

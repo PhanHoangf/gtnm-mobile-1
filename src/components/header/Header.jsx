@@ -14,7 +14,7 @@ const Header = (props) => {
             ) : (
                 <React.Fragment></React.Fragment>
             )}
-            <Video
+            {/* <Video
                 ref={video}
                 style={styles.video}
                 source={{
@@ -24,9 +24,9 @@ const Header = (props) => {
                 resizeMode='contain'
                 isLooping
                 onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-            />
-            {/* <View style={styles.imageContainer}>
-                <Video
+            /> */}
+            <View style={styles.imageContainer}>
+                {/* <Video
                     ref={video}
                     style={styles.imageContainer}
                     source={{
@@ -36,11 +36,31 @@ const Header = (props) => {
                     resizeMode='contain'
                     isLooping
                     onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-                />
+                /> */}
                 <TouchableOpacity>
                     <Image style={styles.image} source={require('../../../assets/Play.png')} />
                 </TouchableOpacity>
-            </View> */}
+            </View>
+            <View style={styles.headerBody}>
+                <View style={styles.headerLeft}>
+                    <View>
+                        <Image
+                            style={styles.icon}
+                            source={require('../../../assets/Vector.png')}
+                        ></Image>
+                    </View>
+                    <Text style={[styles.textWhite]}>My List</Text>
+                </View>
+                <View style={styles.headerRight}>
+                    <View>
+                        <Image
+                            style={styles.icon}
+                            source={require('../../../assets/info.png')}
+                        ></Image>
+                    </View>
+                    <Text style={[styles.textWhite]}>Info</Text>
+                </View>
+            </View>
         </View>
     );
 };
@@ -49,10 +69,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1.5,
         flexDirection: 'column',
-        backgroundColor: 'rgba(255, 0, 0, 0.55); ',
+        backgroundColor: '#000000',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
+        paddingBottom: 20
     },
     header: {
         padding: 20,
@@ -64,7 +85,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
     },
     imageContainer: {
-        // borderRadius: 12,
+        borderRadius: 12,
         backgroundColor: '#fff',
         marginBottom: 'auto',
         width: '90%',
@@ -78,16 +99,32 @@ const styles = StyleSheet.create({
         width: 74,
         height: 74,
     },
+    icon: {
+        width: 28,
+        height: 20,
+        marginBottom: 10,
+    },
     textCenter: {
         textAlign: 'center',
     },
-    video: {
-        alignSelf: 'center',
-        width: 320,
-        height: 200,
-        marginBottom: 20,
-        marginTop: 20,
-        borderRadius: 12,
+    headerBody: {
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    headerLeft: {
+        paddingLeft: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    headerRight: {
+        paddingRight: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textWhite: {
+        color: '#fff',
     },
 });
 

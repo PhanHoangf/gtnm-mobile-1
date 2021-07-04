@@ -7,12 +7,16 @@ import Header from '../header/Header';
 import StudyPage from '../../pages/StudyPage';
 import HeaderAction from '../header/HeaderAction';
 import WatchPage from '../../pages/WatchPage';
+import SearchHeader from '../header/SearchHeader';
+import FavoritePage from '../../pages/FavoritePage';
+import HeaderWatch from '../header/HeaderWatch';
 
 const HomeRoute = (props) => {
     return (
         <Wrapper>
-            <Header>WELCOME GENIOUS</Header>
-            <HomePage></HomePage>
+            <HeaderAction route={props} title='NEWS' />
+            <Header></Header>
+            <HomePage route={props}></HomePage>
         </Wrapper>
     );
 };
@@ -20,9 +24,11 @@ const HomeRoute = (props) => {
 const NewsRoute = (props) => {
     return (
         <Wrapper>
-            <HeaderAction title='NEWS' />
-            <Header></Header>
-            <NewsPage></NewsPage>
+            <HeaderAction route={props} />
+            {/* <Header></Header> */}
+            <SearchHeader route={props}></SearchHeader>
+            <HomePage route={props}></HomePage>
+            {/* <NewsPage></NewsPage> */}
         </Wrapper>
     );
 };
@@ -30,9 +36,10 @@ const NewsRoute = (props) => {
 const StudyRoute = (props) => {
     return (
         <Wrapper>
-            <HeaderAction title='STUDYING' />
-            <Header></Header>
-            <StudyPage route={props}></StudyPage>
+            <HeaderAction route={props} title='STUDYING' />
+            {/* <Header></Header> */}
+            <FavoritePage route={props} />
+            {/* <StudyPage route={props}></StudyPage> */}
             {/* <NewsPage></NewsPage> */}
         </Wrapper>
     );
@@ -41,10 +48,9 @@ const StudyRoute = (props) => {
 const WatchingRoute = (props) => {
     return (
         <Wrapper>
-            <HeaderAction title='WATCHING' />
-            <Header></Header>
-            <WatchPage route={props}/>
-            {/* <NewsPage></NewsPage> */}
+            <HeaderAction route={props} title='WATCHING' />
+            <HeaderWatch />
+            <WatchPage route={props} />
         </Wrapper>
     );
 };
@@ -52,10 +58,10 @@ const WatchingRoute = (props) => {
 const Navigation = () => {
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
-        { key: 'home', title: 'Home', icon: 'home' },
-        { key: 'news', title: 'News', icon: 'album' },
-        { key: 'study', title: 'Studying', icon: 'book' },
-        { key: 'watch', title: 'Watch', icon: 'book' },
+        { key: 'home', icon: 'home' },
+        { key: 'news', icon: 'magnify' },
+        { key: 'study', icon: 'menu' },
+        { key: 'watch', icon: 'video' },
     ]);
 
     const renderScene = ({ route, jumpTo }) => {
@@ -76,9 +82,9 @@ const Navigation = () => {
             navigationState={{ index, routes }}
             onIndexChange={setIndex}
             renderScene={renderScene}
-            barStyle={{ backgroundColor: '#FAFAFA' }}
-            activeColor='#2F80ED'
-            inactiveColor='#E8E8E8'
+            barStyle={{ backgroundColor: '#000000' }}
+            activeColor='#FFF'
+            inactiveColor='#868686'
             style={{ width: '100%' }}
         />
     );
